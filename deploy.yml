@@ -1,0 +1,17 @@
+---
+- name: Build and Deploy ReactJS App to Docker Hub
+  hosts: localhost
+  gather_facts: false
+tasks:
+    - name: Checkout Repository
+      git:
+repo: "https://github.com/KlikSen/SampleWebApp.git"
+        dest: “SampleWebApp”
+        version: master
+    - name: Log in to Docker Hub
+      command: docker login -u "{{ DOCKER_USERNAME }}" -p "{{
+DOCKER_PASSWORD }}"
+    - name: Build Docker Image
+      command: docker build -t kliksen/java_pr:latest .
+    - name: Push Docker Image to DockerHub
+      command: docker push kliksen/java_pr:latest
