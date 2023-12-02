@@ -12,5 +12,7 @@
       command: docker login -u "{{ DOCKER_USERNAME }}" -p "{{DOCKER_PASSWORD }}"
     - name: Build Docker Image
       command: docker build -t kliksen/java_pr:latest .
+    - name: Run Docker Image
+      command: docker run -d -p kliksen/java_pr:latest
     - name: Push Docker Image to DockerHub
       command: docker push kliksen/java_pr:latest
