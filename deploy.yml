@@ -13,6 +13,6 @@
     - name: Build Docker Image
       command: docker build -t kliksen/java_pr:latest .
     - name: Run Docker Image
-      command: docker run -d -p kliksen/java_pr:latest
+      command: docker run -d -p 8085:8080 kliksen/java_pr:latest
     - name: Push Docker Image to DockerHub
       command: docker push kliksen/java_pr:latest
